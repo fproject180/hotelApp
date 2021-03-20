@@ -2,7 +2,9 @@
     package="com.example.hotelmain">
    <application
         android:label="hotelmain"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true">
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
