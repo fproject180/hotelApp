@@ -1,32 +1,32 @@
 // To parse this JSON data, do
 //
-//     final amenitiesToggle = amenitiesToggleFromJson(jsonString);
+//     final amenititesService = amenititesServiceFromJson(jsonString);
 
 import 'dart:convert';
 
-AmenitiesToggle amenitiesToggleFromJson(String str) =>
-    AmenitiesToggle.fromJson(json.decode(str));
+AmenititesService amenititesServiceFromJson(String str) =>
+    AmenititesService.fromJson(json.decode(str));
 
-String amenitiesToggleToJson(AmenitiesToggle data) =>
+String amenititesServiceToJson(AmenititesService data) =>
     json.encode(data.toJson());
 
-class AmenitiesToggle {
-  AmenitiesToggle({
-    this.amenitiesName,
+class AmenititesService {
+  AmenititesService({
+    this.amenities,
     this.flag,
   });
 
-  String amenitiesName;
-  int flag;
+  String amenities;
+  String flag;
 
-  factory AmenitiesToggle.fromJson(Map<String, dynamic> json) =>
-      AmenitiesToggle(
-        amenitiesName: json["amenitiesName"],
+  factory AmenititesService.fromJson(Map<String, dynamic> json) =>
+      AmenititesService(
+        amenities: json["amenities"],
         flag: json["flag"],
       );
 
   Map<String, dynamic> toJson() => {
-        "amenitiesName": amenitiesName,
+        "amenities": amenities,
         "flag": flag,
       };
 }

@@ -1,10 +1,19 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hotelmain/services/amenitiesService.dart';
 import 'package:lottie/lottie.dart';
+import 'package:dio/dio.dart';
 
 class AmenitiesPage extends StatefulWidget {
   @override
   _AmenitiesPageState createState() => _AmenitiesPageState();
+}
+
+Future<AmenititesService> toggleAmenitites(amenitiesName, flag) async {
+  String apiurl = "192.168.0.109:3000/amenitiesRoute";
+  Response response = await Dio()
+      .post(apiurl, data: {"amenitiesName": amenitiesName, "flag": flag});
 }
 
 class _AmenitiesPageState extends State<AmenitiesPage> {
