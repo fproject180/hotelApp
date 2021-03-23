@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotelmain/pages/amenities.dart';
 import 'package:hotelmain/pages/homePage.dart';
 // import 'package:hotelmain/pages/homePage.dart';
 import 'package:hotelmain/pages/loginPage.dart';
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: LoginPage(),
+      home: RegisterPage(),
     );
   }
 }

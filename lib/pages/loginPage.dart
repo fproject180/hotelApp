@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 50.0,
             ),
-            Lottie.asset('assets/login.json', height: 200.0),
+            Lottie.asset('assets/login.json', height: 150.0),
             SizedBox(
               height: 20.0,
             ),
@@ -68,24 +68,27 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       SizedBox(height: 20.0),
                       Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: TextFormField(
                           controller: emailController,
                           decoration: InputDecoration(
-                            hintText: "Email",
+                            // hintText: "Email",
                             labelText: "Email",
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(25)),
+                                borderRadius: BorderRadius.circular(20)),
                           ),
                         ),
                       ),
                       SizedBox(height: 5.0),
                       Padding(
                         padding: const EdgeInsets.all(15.0),
-                        child: CupertinoTextField(
-                            placeholder: "Password",
-                            controller: passwordController,
-                            padding: EdgeInsets.all(15.0)),
+                        child: TextFormField(
+                          controller: passwordController,
+                          decoration: InputDecoration(
+                              labelText: "Password",
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20))),
+                        ),
                       ),
                       SizedBox(
                         height: 10.0,
