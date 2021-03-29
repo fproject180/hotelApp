@@ -1,5 +1,11 @@
+import 'dart:convert';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:hotelmain/services/hotelService.dart';
 import 'package:lottie/lottie.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,11 +15,20 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   AnimationController _animationController;
+  var responseData;
+
+  Future<List> hotelData;
+
+  Future<List> getRequest() async {
+    var response = await Dio().get("http://192.168.0.106:3000/hotelRoute");
+    return response.data;
+  }
 
   // animation controller for lottie
   @override
   void initState() {
     // TODO: implement initState
+    hotelData = getRequest();
     super.initState();
     _animationController =
         AnimationController(vsync: this, duration: Duration(seconds: 5));
@@ -28,91 +43,61 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 50,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            CupertinoSliverNavigationBar(
+              largeTitle: Text("Hotels"),
             ),
-            Lottie.asset('assets/cities_animation.json',
-                controller: _animationController, onLoaded: (composition) {
-              _animationController
-                ..duration = composition.duration
-                ..forward();
-            }),
-            SizedBox(
-              height: 50,
-            ),
-            Center(
-              child: Text(
-                "Cities",
-                style: TextStyle(fontSize: 50.0),
-              ),
-            ),
-            SizedBox(
-              height: 50.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Container(
-                height: 100,
-                width: double.infinity,
-                child: Card(
-                  elevation: 20.0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0)),
-                  child: InkWell(
-                    onTap: () {},
-                    child: ListTile(
-                      title: Text(
-                        "Pune",
-                        style: TextStyle(fontSize: 40.0),
-                      ),
-                      contentPadding: EdgeInsets.all(10.0),
-                      leading: Image(
-                        image: AssetImage('assets/pune_city.png'),
-                        height: 200.0,
-                      ),
-                      trailing: Icon(
-                        CupertinoIcons.forward,
-                        size: 50.0,
-                      ),
+          ];
+        },
+        body: Container(
+          child: FutureBuilder<List>(
+              future: hotelData,
+              builder: (BuildContext context, AsyncSnapshot<List> snapshot) {
+                if (snapshot.hasData) {
+                  print(snapshot.data);
+                  return ListView.builder(
+                      itemCount: snapshot.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 2.0, horizontal: 15.0),
+                          child: Container(
+                            height: 300.0,
+                            child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                elevation: 20.0,
+                                child: Ink(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        gradient: LinearGradient(colors: [
+                                          Colors.purple[800],
+                                          Colors.blue[800]
+                                        ])),
+                                    child: Center(
+                                      child: Text(
+                                        snapshot.data[index]["hotelName"],
+                                        style: TextStyle(
+                                            fontSize: 30.0,
+                                            color: Colors.white),
+                                      ),
+                                    ))),
+                          ),
+                        );
+                      });
+                }
+                return Container(
+                  child: Center(
+                    child: SpinKitFoldingCube(
+                      color: Colors.teal,
                     ),
                   ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Container(
-                height: 100,
-                width: double.infinity,
-                child: Card(
-                  elevation: 20.0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0)),
-                  child: InkWell(
-                    onTap: () {},
-                    child: ListTile(
-                      title: Text(
-                        "Mumbai",
-                        style: TextStyle(fontSize: 40.0),
-                      ),
-                      contentPadding: EdgeInsets.all(10.0),
-                      leading: Image(
-                        image: AssetImage('assets/mumbai_city.png'),
-                        height: 200.0,
-                      ),
-                      trailing: Icon(
-                        CupertinoIcons.forward,
-                        size: 50.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
+                );
+              }),
         ),
       ),
     );

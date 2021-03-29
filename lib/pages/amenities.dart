@@ -14,6 +14,12 @@ Future<AmenititesService> toggleAmenitites(amenitiesName, flag) async {
   String apiurl = "192.168.0.109:3000/amenitiesRoute";
   Response response = await Dio()
       .post(apiurl, data: {"amenitiesName": amenitiesName, "flag": flag});
+  if (response.statusCode == 200) {
+    final String responseString = response.data;
+    return amenititesServiceFromJson(responseString);
+  } else {
+    return null;
+  }
 }
 
 class _AmenitiesPageState extends State<AmenitiesPage> {
@@ -80,10 +86,14 @@ class _AmenitiesPageState extends State<AmenitiesPage> {
                             subtitle: Text("-Keep it cool"),
                             trailing: CupertinoSwitch(
                                 value: ac,
-                                onChanged: (bool value) {
+                                onChanged: (bool value) async {
                                   setState(() {
                                     ac = value;
                                   });
+                                  String amenitiesName = "ac";
+                                  String flag = ac == true ? "1" : "0";
+                                  var toggle = await toggleAmenitites(
+                                      amenitiesName, flag);
                                 }),
                           ),
                           SizedBox(height: 10.0),
