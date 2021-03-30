@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -49,97 +50,97 @@ class _AmenitiesPageState extends State<AmenitiesPage> {
             Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Container(
-                    height: 415.0,
-                    width: double.infinity,
-                    child: Card(
-                      elevation: 20.0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(height: 10.0),
-                          ListTile(
-                            leading: Icon(
-                              CupertinoIcons.lightbulb_fill,
-                              color: CupertinoColors.systemYellow,
-                            ),
-                            title: Text("Lights",
-                                style: TextStyle(fontSize: 30.0)),
-                            subtitle: Text("-Make room bright"),
-                            trailing: CupertinoSwitch(
-                                value: light,
-                                onChanged: (bool value) {
-                                  setState(() {
-                                    light = value;
-                                  });
-                                }),
+                  height: 415.0,
+                  width: double.infinity,
+                  child: Card(
+                    elevation: 20.0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(height: 10.0),
+                        ListTile(
+                          leading: Icon(
+                            CupertinoIcons.lightbulb_fill,
+                            color: CupertinoColors.systemYellow,
                           ),
-                          SizedBox(height: 10.0),
-                          ListTile(
-                            leading: Icon(
-                              Icons.ac_unit,
-                              color: CupertinoColors.systemBlue,
-                            ),
-                            title:
-                                Text("A/C", style: TextStyle(fontSize: 30.0)),
-                            subtitle: Text("-Keep it cool"),
-                            trailing: CupertinoSwitch(
-                                value: ac,
-                                onChanged: (bool value) async {
-                                  setState(() {
-                                    ac = value;
-                                  });
-                                  String amenitiesName = "ac";
-                                  String flag = ac == true ? "1" : "0";
-                                  var toggle = await toggleAmenitites(
-                                      amenitiesName, flag);
-                                }),
+                          title:
+                              Text("Lights", style: TextStyle(fontSize: 30.0)),
+                          subtitle: Text("-Make room bright"),
+                          trailing: CupertinoSwitch(
+                              value: light,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  light = value;
+                                });
+                              }),
+                        ),
+                        SizedBox(height: 10.0),
+                        ListTile(
+                          leading: Icon(
+                            Icons.ac_unit,
+                            color: CupertinoColors.systemBlue,
                           ),
-                          SizedBox(height: 10.0),
-                          ListTile(
-                            leading: Icon(
-                              Icons.local_cafe_outlined,
-                              color: CupertinoColors.systemGrey,
-                            ),
-                            title: Text("Coffee-Maker",
-                                style: TextStyle(fontSize: 30.0)),
-                            subtitle: Text("-Make some Cafe"),
-                            trailing: CupertinoSwitch(
-                                value: cafe,
-                                onChanged: (bool value) {
-                                  setState(() {
-                                    cafe = value;
-                                  });
-                                }),
+                          title: Text("A/C", style: TextStyle(fontSize: 30.0)),
+                          subtitle: Text("-Keep it cool"),
+                          trailing: CupertinoSwitch(
+                              value: ac,
+                              onChanged: (bool value) async {
+                                setState(() {
+                                  ac = value;
+                                });
+                                String amenitiesName = "ac";
+                                String flag = ac == true ? "1" : "0";
+                                var toggle =
+                                    await toggleAmenitites(amenitiesName, flag);
+                              }),
+                        ),
+                        SizedBox(height: 10.0),
+                        ListTile(
+                          leading: Icon(
+                            Icons.local_cafe_outlined,
+                            color: CupertinoColors.systemGrey,
                           ),
-                          SizedBox(height: 10.0),
-                          ListTile(
-                            leading: Icon(
-                              CupertinoIcons.tv,
-                              color: CupertinoColors.black,
-                            ),
-                            title: Text("TV", style: TextStyle(fontSize: 30.0)),
-                            subtitle: Text("-Watch TV"),
-                            trailing: CupertinoSwitch(
-                                value: tv,
-                                onChanged: (bool value) {
-                                  setState(() {
-                                    tv = value;
-                                  });
-                                }),
+                          title: Text("Coffee-Maker",
+                              style: TextStyle(fontSize: 30.0)),
+                          subtitle: Text("-Make some Cafe"),
+                          trailing: CupertinoSwitch(
+                              value: cafe,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  cafe = value;
+                                });
+                              }),
+                        ),
+                        SizedBox(height: 10.0),
+                        ListTile(
+                          leading: Icon(
+                            CupertinoIcons.tv,
+                            color: CupertinoColors.black,
                           ),
-                          SizedBox(height: 10.0),
-                          CupertinoButton(
-                            child: Text(
-                              "Done",
-                            ),
-                            color: CupertinoColors.activeBlue,
-                            onPressed: () {},
+                          title: Text("TV", style: TextStyle(fontSize: 30.0)),
+                          subtitle: Text("-Watch TV"),
+                          trailing: CupertinoSwitch(
+                              value: tv,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  tv = value;
+                                });
+                              }),
+                        ),
+                        SizedBox(height: 10.0),
+                        CupertinoButton(
+                          child: Text(
+                            "Done",
                           ),
-                        ],
-                      ),
-                    )))
+                          color: CupertinoColors.activeBlue,
+                          onPressed: () {},
+                        ),
+                      ],
+                    ),
+                  ),
+                ))
           ],
         ),
       ),

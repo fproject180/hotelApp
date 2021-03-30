@@ -4,6 +4,8 @@ import 'package:hotelmain/pages/homePage.dart';
 // import 'package:hotelmain/pages/homePage.dart';
 import 'package:hotelmain/pages/loginPage.dart';
 import 'package:hotelmain/pages/registerPage.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:page_transition/page_transition.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +21,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: HomePage(),
+      home: Container(
+        height: 100,
+        width: 800,
+        child: AnimatedSplashScreen(
+          splash: Image.asset(
+            'assets/hotel1.png',
+          ),
+          nextScreen: HomePage(),
+          splashTransition: SplashTransition.scaleTransition,
+          backgroundColor: Colors.tealAccent,
+          duration: 5000,
+        ),
+      ),
     );
   }
 }

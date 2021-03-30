@@ -20,7 +20,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Future<List> hotelData;
 
   Future<List> getRequest() async {
-    var response = await Dio().get("http://192.168.0.106:3000/hotelRoute");
+    var response =
+        await Dio().get("https://11f1812bfabd.ngrok.io/hotelRoute%22");
+
     return response.data;
   }
 
