@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hotelmain/pages/amenities.dart';
+import 'package:hotelmain/services/registerService.dart';
 import "package:lottie/lottie.dart";
 
 class RegisterPage extends StatefulWidget {
@@ -8,7 +10,28 @@ class RegisterPage extends StatefulWidget {
   _RegisterPageState createState() => _RegisterPageState();
 }
 
+Future<RegisterUser> registerWithNameEmailAndPassword(
+    name, email, password) async {
+  final String apiUrl = "";
+  Response response = await Dio().post(apiUrl, data: {
+    "name": name,
+    "email": email,
+    "password": password,
+  });
+  if (response == 200) {
+    final String responseString = response.data;
+    return registerUserFromJson(responseString);
+  } else {
+    return null;
+  }
+}
+
 class _RegisterPageState extends State<RegisterPage> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  RegisterUser _registerUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,7 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: TextFormField(
-                            // controller: emailController,
+                            controller: nameController,
                             decoration: InputDecoration(
                               // hintText: "Email",
                               labelText: "Name",
@@ -72,7 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: TextFormField(
-                            // controller: passwordController,
+                            controller: emailController,
                             decoration: InputDecoration(
                                 labelText: "Email",
                                 border: OutlineInputBorder(
@@ -83,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         Padding(
                           padding: const EdgeInsets.all(15.0),
                           child: TextFormField(
-                            // controller: passwordController,
+                            controller: passwordController,
                             decoration: InputDecoration(
                                 labelText: "Password",
                                 border: OutlineInputBorder(
@@ -96,7 +119,13 @@ class _RegisterPageState extends State<RegisterPage> {
                             "Submit",
                           ),
                           color: CupertinoColors.activeBlue,
-                          onPressed: () {
+                          onPressed: () async {
+                            final String name = nameController.text;
+                            final String email = emailController.text;
+                            final String password = passwordController.text;
+                            var _userRegister =
+                                await registerWithNameEmailAndPassword(
+                                    name, email, password);
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => AmenitiesPage()));
                           },

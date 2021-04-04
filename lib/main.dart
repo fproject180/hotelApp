@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelmain/pages/amenities.dart';
+import 'package:hotelmain/pages/bookingInfo.dart';
 import 'package:hotelmain/pages/homePage.dart';
 // import 'package:hotelmain/pages/homePage.dart';
 import 'package:hotelmain/pages/loginPage.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           splash: Image.asset(
             'assets/hotel1.png',
           ),
-          nextScreen: HomePage(),
+          nextScreen: RegisterPage(),
           splashTransition: SplashTransition.scaleTransition,
           backgroundColor: Colors.tealAccent,
           duration: 5000,
