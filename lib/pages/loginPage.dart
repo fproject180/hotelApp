@@ -12,7 +12,7 @@ class LoginPage extends StatefulWidget {
 }
 
 Future<LoginUser> loginWithEmailAndPassword(email, password) async {
-  final String apiUrl = "http://192.168.1.28:3000/loginRoute";
+  final String apiUrl = "https://f5e91fde0038.ngrok.io/loginRoute";
   Response response = await Dio().post(apiUrl, data: {
     "email": email,
     "password": password,

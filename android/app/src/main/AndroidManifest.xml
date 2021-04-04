@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hotelmain">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="hotelmain"
         android:icon="@mipmap/ic_launcher"
