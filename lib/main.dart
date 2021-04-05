@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:hotelmain/pages/amenities.dart';
 import 'package:hotelmain/pages/bookingInfo.dart';
@@ -23,15 +25,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Container(
-        height: 100,
-        width: 800,
+
         child: AnimatedSplashScreen(
           splash: Image.asset(
-            'assets/hotel1.png',
+            'assets/splash.gif',
+            fit: BoxFit.fill,
           ),
+          splashIconSize: double.infinity,
           nextScreen: LoginPage(),
-          splashTransition: SplashTransition.scaleTransition,
-          backgroundColor: Colors.tealAccent,
           duration: 5000,
         ),
       ),
