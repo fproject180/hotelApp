@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hotelmain/otherPages/aboutUs.dart';
+import 'package:hotelmain/pages/bookingInfo.dart';
 import 'package:slimy_card/slimy_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -144,7 +145,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             "More Info",
             style: TextStyle(color: Colors.black),
           ),
-          onPressed: () {},
+          onPressed: () {
+            
+          },
           color: Colors.white,
         ),
         SizedBox(
@@ -155,7 +158,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             "Book Room",
             style: TextStyle(color: Colors.black),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).push(CupertinoPageRoute(builder: (context)=>BookingInfoPage()));
+          },
           color: Colors.white,
         ),
       ],

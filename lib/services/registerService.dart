@@ -11,28 +11,28 @@ String registerUserToJson(RegisterUser data) => json.encode(data.toJson());
 
 class RegisterUser {
   RegisterUser({
-    this.name,
-    this.email,
-    this.password,
+    this.Name,
+    this.Email,
+    this.Password,
     this.MobileNo,
   });
 
-  String name;
-  String email;
-  String password;
+  String Name;
+  String Email;
+  String Password;
   String MobileNo;
 
   factory RegisterUser.fromJson(Map<String, dynamic> json) => RegisterUser(
-        name: json["name"],
-        email: json["email"],
-        password: json["password"],
+        Name: json["Name"],
+        Email: json["Email"],
+        Password: json["Password"],
         MobileNo: json["MobileNo"],
       );
 
   Map<String, dynamic> toJson() => {
-        "name": name,
-        "email": email,
-        "password": password,
+        "Name": Name,
+        "Email": Email,
+        "Password": Password,
         "MobileNo": MobileNo
       };
 }

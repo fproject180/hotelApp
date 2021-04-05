@@ -11,12 +11,12 @@ class RegisterPage extends StatefulWidget {
 }
 
 Future<RegisterUser> registerWithNameEmailAndPassword(
-    name, email, password, MobileNo) async {
+    Name, Email, Password, MobileNo) async {
   final String apiUrl = "https://f5e91fde0038.ngrok.io/registerRoute";
   Response response = await Dio().post(apiUrl, data: {
-    "name": name,
-    "email": email,
-    "password": password,
+    "Name": Name,
+    "Email": Email,
+    "Password": Password,
     "MobileNo": MobileNo,
   });
   if (response.statusCode == 200) {

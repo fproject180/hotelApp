@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           splash: Image.asset(
             'assets/hotel1.png',
           ),
-          nextScreen: RegisterPage(),
+          nextScreen: HomePage(),
           splashTransition: SplashTransition.scaleTransition,
           backgroundColor: Colors.tealAccent,
           duration: 5000,
