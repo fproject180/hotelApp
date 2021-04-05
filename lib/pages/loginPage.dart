@@ -12,12 +12,12 @@ class LoginPage extends StatefulWidget {
 }
 
 Future<LoginUser> loginWithEmailAndPassword(email, password) async {
-  final String apiUrl = "https://f5e91fde0038.ngrok.io/loginRoute";
+  final String apiUrl = "https://8cd7fbc5091c.ngrok.io/loginRoute";
   Response response = await Dio().post(apiUrl, data: {
     "email": email,
     "password": password,
   });
-  if (response == 200) {
+  if (response.statusCode == 200) {
     final String responseString = response.data;
     return loginUserFromJson(responseString);
   } else {
@@ -34,7 +34,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.tealAccent,
       // appBar: AppBar(
       //   title: Text("Hotel"),
       //   backgroundColor: Colors.red,

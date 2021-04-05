@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
 
   Future<List> getRequest() async {
-    var response = await Dio().get("https://f5e91fde0038.ngrok.io/hotelRoute");
+    var response = await Dio().get("https://8cd7fbc5091c.ngrok.io/hotelRoute");
     return response.data;
   }
 

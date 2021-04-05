@@ -211,7 +211,9 @@ class _BookingInfoPageState extends State<BookingInfoPage> {
         title: Text("Please Read"),
         content: SingleChildScrollView(
           child: ListBody(
-            children: [],
+            children: [
+              ListTile(title: Text("Do not use the guest rooms for purposes other than intended without authorization"))
+            ],
           ),
         ),
         actions: [

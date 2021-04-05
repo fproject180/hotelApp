@@ -12,7 +12,7 @@ class RegisterPage extends StatefulWidget {
 
 Future<RegisterUser> registerWithNameEmailAndPassword(
     Name, Email, Password, MobileNo) async {
-  final String apiUrl = "https://f5e91fde0038.ngrok.io/registerRoute";
+  final String apiUrl = "https://8cd7fbc5091c.ngrok.io/registerRoute";
   Response response = await Dio().post(apiUrl, data: {
     "Name": Name,
     "Email": Email,
@@ -37,7 +37,6 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.tealAccent,
         // appBar: AppBar(
         //   title: Text("Hotel"),
         //   backgroundColor: Colors.red,

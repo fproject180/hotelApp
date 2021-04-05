@@ -10,7 +10,7 @@ class AmenitiesPage extends StatefulWidget {
 }
 
 Future<AmenititesService> toggleAmenitites(amenitiesName, flag) async {
-  String apiurl = "https://f5e91fde0038.ngrok.io/amenitiesRoute";
+  String apiurl = "https://8cd7fbc5091c.ngrok.io/amenitiesRoute";
   Response response = await Dio()
       .post(apiurl, data: {"amenitiesName": amenitiesName, "flag": flag});
   if (response.statusCode == 200) {
