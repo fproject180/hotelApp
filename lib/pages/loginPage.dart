@@ -17,7 +17,7 @@ Future<LoginUser> loginWithEmailAndPassword(email, password) async {
     "email": email,
     "password": password,
   });
-  if (response.statusCode == 200) {
+  if (response == 200) {
     final String responseString = response.data;
     return loginUserFromJson(responseString);
   } else {
