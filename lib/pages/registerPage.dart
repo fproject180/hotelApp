@@ -77,14 +77,23 @@ class _RegisterPageState extends State<RegisterPage> {
                       currentStep = step;
                     });
                   },
-                  onStepContinue: () {
+                  onStepContinue: () async {
+                    var Name = nameController.text;
+                    var Email = emailController.text;
+                    var Password = passwordController.text;
+                    var MobileNo = numberController.text;
+                    var Address = addressController.text;
+                    var Dob = dobController.text;
+                    RegisterUser _registerUser =
+                        await registerWithNameEmailAndPassword(
+                            Name, Email, Password, MobileNo, Address, Dob);
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => HomePage()));
                     setState(() {
                       if (currentStep < this._mySteps().length - 1) {
                         //to go to next step
                         currentStep = this.currentStep + 1;
                       } else {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => HomePage()));
                         //logic to check if everything is completed
                         print("Everything is complete");
                       }
