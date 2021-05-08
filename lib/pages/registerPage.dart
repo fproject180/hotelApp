@@ -12,13 +12,15 @@ class RegisterPage extends StatefulWidget {
 }
 
 Future<RegisterUser> registerWithNameEmailAndPassword(
-    Name, Email, Password, MobileNo) async {
-  final String apiUrl = "https://8cd7fbc5091c.ngrok.io/registerRoute";
+    Name, Email, Password, MobileNo, Address, Dob) async {
+  final String apiUrl = "http://52.66.53.243:3000/auth/register";
   Response response = await Dio().post(apiUrl, data: {
-    "Name": Name,
-    "Email": Email,
-    "Password": Password,
-    "MobileNo": MobileNo,
+    "name": Name,
+    "email": Email,
+    "password": Password,
+    "mobileNo": MobileNo,
+    "address": Address,
+    "dob": Dob
   });
   if (response.statusCode == 200) {
     final String responseString = response.data;
@@ -38,6 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   int currentStep = 0;
   DateTime dateTime = DateTime.now();
+  var formattedDate;
 
   RegisterUser _registerUser;
   @override
@@ -80,6 +83,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         //to go to next step
                         currentStep = this.currentStep + 1;
                       } else {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => HomePage()));
                         //logic to check if everything is completed
                         print("Everything is complete");
                       }
@@ -168,7 +173,7 @@ class _RegisterPageState extends State<RegisterPage> {
             readOnly: true,
             controller: dobController,
             placeholder:
-                dateTime == DateTime.now() ? "Date of Birth" : "$dateTime",
+                formattedDate == null ? "Date of Birth" : "$formattedDate",
             suffix: IconButton(
               icon: Icon(Icons.date_range),
               color: Colors.blue,
@@ -179,7 +184,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         firstDate: DateTime(1940),
                         lastDate: DateTime(2022))
                     .then((value) => setState(() {
-                          dateTime = value;
+                          formattedDate = value;
                         }));
               },
             ),

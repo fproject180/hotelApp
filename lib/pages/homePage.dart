@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
 
   Future<List> getRequest() async {
-    var response = await Dio().get("https://8cd7fbc5091c.ngrok.io/hotelRoute");
+    var response = await Dio().get("http://52.66.53.243:3000/hotelroute");
     return response.data;
   }
 
@@ -145,9 +145,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             "More Info",
             style: TextStyle(color: Colors.black),
           ),
-          onPressed: () {
-            
-          },
+          onPressed: () {},
           color: Colors.white,
         ),
         SizedBox(
@@ -159,7 +157,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.black),
           ),
           onPressed: () {
-            Navigator.of(context).push(CupertinoPageRoute(builder: (context)=>BookingInfoPage()));
+            Navigator.of(context).push(
+                CupertinoPageRoute(builder: (context) => BookingInfoPage()));
           },
           color: Colors.white,
         ),
@@ -177,36 +176,32 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           _selectedIndex = index;
         });
         if (_selectedIndex == 0) {
-          
         } else if (_selectedIndex == 1) {
-          Navigator.of(context).push(CupertinoPageRoute(builder: (context)=>AboutUs()));
+          Navigator.of(context)
+              .push(CupertinoPageRoute(builder: (context) => AboutUs()));
         }
       },
       items: [
         BottomNavyBarItem(
-          icon: Icon(Icons.apps),
-          title: Text('Home'),
-          activeColor: Colors.red,
-          textAlign: TextAlign.center
-        ),
+            icon: Icon(Icons.apps),
+            title: Text('Home'),
+            activeColor: Colors.red,
+            textAlign: TextAlign.center),
         BottomNavyBarItem(
             icon: Icon(Icons.people),
             title: Text('About Us'),
             activeColor: Colors.purpleAccent,
-            textAlign: TextAlign.center
-        ),
+            textAlign: TextAlign.center),
         BottomNavyBarItem(
             icon: Icon(Icons.message),
             title: Text('Messages'),
             activeColor: Colors.pink,
-            textAlign: TextAlign.center
-        ),
+            textAlign: TextAlign.center),
         BottomNavyBarItem(
             icon: Icon(Icons.settings),
             title: Text('Settings'),
             activeColor: Colors.blue,
-            textAlign: TextAlign.center
-        ),
+            textAlign: TextAlign.center),
       ],
     );
   }
