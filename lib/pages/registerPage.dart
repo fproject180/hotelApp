@@ -15,13 +15,19 @@ class RegisterPage extends StatefulWidget {
 }
 
 Future<RegisterUser> registerWithNameEmailAndPassword(
+<<<<<<< HEAD
     Name, Email, Password, MobileNo) async {
+=======
+    Name, Email, Password, MobileNo, Address, Dob) async {
+>>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
   final String apiUrl = "http://52.66.53.243:3000/auth/register";
   Response response = await Dio().post(apiUrl, data: {
-    "Name": Name,
-    "Email": Email,
-    "Password": Password,
-    "MobileNo": MobileNo,
+    "name": Name,
+    "email": Email,
+    "password": Password,
+    "mobileNo": MobileNo,
+    "address": Address,
+    "dob": Dob
   });
   if (response.statusCode == 200) {
     final String responseString = response.data;
@@ -41,12 +47,14 @@ class _RegisterPageState extends State<RegisterPage> {
 
   int currentStep = 0;
   DateTime dateTime = DateTime.now();
+  var formattedDate;
 
   RegisterUser _registerUser;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+<<<<<<< HEAD
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -104,6 +112,70 @@ class _RegisterPageState extends State<RegisterPage> {
                       });
                     },
                   ),
+=======
+      body: Column(
+        children: [
+          Container(
+              height: 200,
+              width: MediaQuery.of(context).size.width,
+              child: Lottie.asset("assets/register.json")),
+          SizedBox(
+            height: 50,
+          ),
+          Text(
+            "REGISTER",
+            style: TextStyle(fontFamily: "homeAway", fontSize: 50),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              height: MediaQuery.of(context).size.height / 1.7,
+              width: MediaQuery.of(context).size.width,
+              child: Card(
+                elevation: 20.0,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0)),
+                child: CupertinoStepper(
+                  steps: _mySteps(),
+                  currentStep: this.currentStep,
+                  onStepTapped: (step) {
+                    setState(() {
+                      currentStep = step;
+                    });
+                  },
+                  onStepContinue: () async {
+                    var Name = nameController.text;
+                    var Email = emailController.text;
+                    var Password = passwordController.text;
+                    var MobileNo = numberController.text;
+                    var Address = addressController.text;
+                    var Dob = dobController.text;
+                    RegisterUser _registerUser =
+                        await registerWithNameEmailAndPassword(
+                            Name, Email, Password, MobileNo, Address, Dob);
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => HomePage()));
+                    setState(() {
+                      if (currentStep < this._mySteps().length - 1) {
+                        //to go to next step
+                        currentStep = this.currentStep + 1;
+                      } else {
+                        //logic to check if everything is completed
+                        print("Everything is complete");
+                      }
+                    });
+                  },
+                  onStepCancel: () {
+                    setState(() {
+                      if (currentStep > 0) {
+                        this.currentStep = currentStep - 1;
+                      } else {
+                        this.currentStep = 0;
+                        print("we are at the top");
+                      }
+                    });
+                  },
+>>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
                 ),
               ),
             ),
@@ -177,7 +249,7 @@ class _RegisterPageState extends State<RegisterPage> {
             readOnly: true,
             controller: dobController,
             placeholder:
-                dateTime == DateTime.now() ? "Date of Birth" : "$dateTime",
+                formattedDate == null ? "Date of Birth" : "$formattedDate",
             suffix: IconButton(
               icon: Icon(Icons.date_range),
               color: Colors.blue,
@@ -188,7 +260,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         firstDate: DateTime(1940),
                         lastDate: DateTime(2022))
                     .then((value) => setState(() {
-                          dateTime = value;
+                          formattedDate = value;
                         }));
               },
             ),

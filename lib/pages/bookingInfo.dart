@@ -68,6 +68,7 @@ class _BookingInfoPageState extends State<BookingInfoPage> {
                     elevation: 20.0,
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
+<<<<<<< HEAD
                       child: SingleChildScrollView(
                         child: Column(
                           children: [
@@ -194,6 +195,129 @@ class _BookingInfoPageState extends State<BookingInfoPage> {
                                 child: Text("Submit"), onPressed: popUpDialog)
                           ],
                         ),
+=======
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            decoration: InputDecoration(
+                                labelText: "Name",
+                                hintText: "John Doe",
+                                icon: Icon(Icons.person),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0))),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                labelText: "Email",
+                                hintText: "example@gmail.com",
+                                icon: Icon(Icons.email),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0))),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          TextFormField(
+                            decoration: InputDecoration(
+                                labelText: "Address",
+                                hintText: "Street Name, City, Pincode",
+                                icon: Icon(Icons.add_road_sharp),
+                                border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0))),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Divider(),
+                          Text("Select Gender"),
+                          CupertinoSlidingSegmentedControl(
+                              groupValue: gender,
+                              children: genderOptions,
+                              onValueChanged: (index) => {
+                                    setState(() {
+                                      gender = index;
+                                    })
+                                  }),
+                          Divider(),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              ElevatedButton(
+                                  child: Text("Select Age"),
+                                  onPressed: _selectAge),
+                              SizedBox(
+                                width: 30.0,
+                              ),
+                              Flexible(
+                                  child: TextField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                    labelText: minAge.toString(),
+                                    border: OutlineInputBorder()),
+                              ))
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              ElevatedButton(
+                                child: Text("Check In Date"),
+                                onPressed: _selectCheckInDate,
+                              ),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              Flexible(
+                                  child: TextField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                    labelText: checkInDate.toString(),
+                                    border: OutlineInputBorder()),
+                              ))
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              ElevatedButton(
+                                child: Text("Check Out Date"),
+                                onPressed: _selectCheckOutDate,
+                              ),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              Flexible(
+                                  child: TextField(
+                                enabled: false,
+                                decoration: InputDecoration(
+                                    labelText: checkOutDate.toString(),
+                                    border: OutlineInputBorder()),
+                              ))
+                            ],
+                          ),
+                          Divider(),
+                          CupertinoButton(
+                              child: Text("Submit"), onPressed: popUpDialog)
+                        ],
+>>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
                       ),
                     ),
                   ),
