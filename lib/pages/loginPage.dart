@@ -12,12 +12,12 @@ class LoginPage extends StatefulWidget {
 }
 
 Future<LoginUser> loginWithEmailAndPassword(email, password) async {
-  final String apiUrl = "https://8cd7fbc5091c.ngrok.io/loginRoute";
+  final String apiUrl = "http://52.66.53.243:3000/auth/login";
   Response response = await Dio().post(apiUrl, data: {
     "email": email,
     "password": password,
   });
-  if (response == 200) {
+  if (response.statusCode == 200) {
     final String responseString = response.data;
     return loginUserFromJson(responseString);
   } else {
@@ -52,6 +52,9 @@ class _LoginPageState extends State<LoginPage> {
             Text(
               "LOGIN",
               style: TextStyle(fontSize: 60, fontFamily: "homeAway"),
+            ),
+            SizedBox(
+              height: 30.0,
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),
@@ -130,12 +133,12 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         color: CupertinoColors.activeBlue,
                         onPressed: () async {
+                          Navigator.of(context).push(CupertinoPageRoute(
+                              builder: (context) => HomePage()));
                           final String email = emailController.text;
                           final String password = passwordController.text;
                           var _userLogin =
                               await loginWithEmailAndPassword(email, password);
-                          Navigator.of(context).push(CupertinoPageRoute(
-                              builder: (context) => HomePage()));
                         },
                       ),
                     ],
