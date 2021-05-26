@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hotelmain/pages/bookingConfirm.dart';
 import 'package:lottie/lottie.dart';
+import 'package:hotelmain/pages/bookingInformation.dart';
 
 class selectAppliancePage extends StatefulWidget {
   @override
@@ -154,6 +155,7 @@ class _selectAppliancePageState extends State<selectAppliancePage> {
                 child: Text("Select"),
                 color: CupertinoColors.activeBlue,
                 onPressed: () {
+                  setState(() {});
                   showCupertinoDialog(
                       context: context,
                       builder: (context) {

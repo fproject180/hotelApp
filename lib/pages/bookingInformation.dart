@@ -11,16 +11,26 @@ class bookingInformationPage extends StatefulWidget {
 
 class _bookingInformationPageState extends State<bookingInformationPage> {
   TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   TextEditingController numberController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
+  TextEditingController cityController = TextEditingController();
+  TextEditingController roomController = TextEditingController();
+  TextEditingController guestController = TextEditingController();
+  TextEditingController checkinController = TextEditingController();
+  TextEditingController checkoutController = TextEditingController();
 
   int currentStep = 0;
   DateTime dateTime = DateTime.now();
   int _value = 1;
   int _value1 = 1;
   int _value2 = 1;
+
+  var _name;
+  var _mobileno;
+  var _city;
+  var _room;
+  var _guest;
+  var _checkin;
+  var _checkout;
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +90,11 @@ class _bookingInformationPageState extends State<bookingInformationPage> {
             controller: nameController,
             placeholder: "John Doe",
             keyboardType: TextInputType.name,
+            onChanged: (value) {
+              setState(() {
+                _name = value;
+              });
+            },
             suffix: Icon(
               Icons.person,
               color: Colors.blue,

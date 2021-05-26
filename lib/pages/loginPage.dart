@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hotelmain/pages/billingPage.dart';
 import 'package:hotelmain/pages/homePage.dart';
 import 'package:hotelmain/pages/registerPage.dart';
 import 'package:hotelmain/services/loginService.dart';
@@ -12,11 +13,7 @@ class LoginPage extends StatefulWidget {
 }
 
 Future<LoginUser> loginWithEmailAndPassword(email, password) async {
-<<<<<<< HEAD
-  final String apiUrl = "http://52.66.53.243:3000/auth/login";
-=======
   final String apiUrl = "http://52.66.53.243:3000/auth/register";
->>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
   Response response = await Dio().post(apiUrl, data: {
     "email": email,
     "password": password,
@@ -139,17 +136,10 @@ class _LoginPageState extends State<LoginPage> {
                         onPressed: () async {
                           Navigator.of(context).push(CupertinoPageRoute(
                               builder: (context) => HomePage()));
-<<<<<<< HEAD
-                          final String email = emailController.text;
-                          final String password = passwordController.text;
-                          var _userLogin =
-                              await loginWithEmailAndPassword(email, password);
-=======
                           // final String email = emailController.text;
                           // final String password = passwordController.text;
                           // var _userLogin =
                           //     await loginWithEmailAndPassword(email, password);
->>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
                         },
                       ),
                     ],
@@ -157,6 +147,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+            CupertinoButton(
+                color: CupertinoColors.activeGreen,
+                child: Text("Payment"),
+                onPressed: () {
+                  Navigator.of(context).push(
+                      CupertinoPageRoute(builder: (context) => billingPage()));
+                })
           ],
         ),
       ),

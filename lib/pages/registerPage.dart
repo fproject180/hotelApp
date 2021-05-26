@@ -6,7 +6,6 @@ import 'package:hotelmain/pages/homePage.dart';
 import 'package:hotelmain/services/registerService.dart';
 import "package:lottie/lottie.dart";
 
-import 'bookingInfo.dart';
 import 'homePage.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -15,11 +14,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 Future<RegisterUser> registerWithNameEmailAndPassword(
-<<<<<<< HEAD
-    Name, Email, Password, MobileNo) async {
-=======
     Name, Email, Password, MobileNo, Address, Dob) async {
->>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
   final String apiUrl = "http://52.66.53.243:3000/auth/register";
   Response response = await Dio().post(apiUrl, data: {
     "name": Name,
@@ -54,65 +49,6 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-<<<<<<< HEAD
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                child: Lottie.asset("assets/register.json")),
-            SizedBox(
-              height: 50,
-            ),
-            Text(
-              "REGISTER",
-              style: TextStyle(fontFamily: "homeAway", fontSize: 50),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Container(
-                height: MediaQuery.of(context).size.height / 1.7,
-                width: MediaQuery.of(context).size.width,
-                child: Card(
-                  elevation: 20.0,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0)),
-                  child: CupertinoStepper(
-                    steps: _mySteps(),
-                    currentStep: this.currentStep,
-                    onStepTapped: (step) {
-                      setState(() {
-                        currentStep = step;
-                      });
-                    },
-                    onStepContinue: () {
-                      setState(() {
-                        if (currentStep < this._mySteps().length - 1) {
-                          //to go to next step
-                          currentStep = this.currentStep + 1;
-                        } else {
-                          //logic to check if everything is completed
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BookingInfoPage()));
-                          print("Everything is complete");
-                        }
-                      });
-                    },
-                    onStepCancel: () {
-                      setState(() {
-                        if (currentStep > 0) {
-                          this.currentStep = currentStep - 1;
-                        } else {
-                          this.currentStep = 0;
-                          print("we are at the top");
-                        }
-                      });
-                    },
-                  ),
-=======
       body: Column(
         children: [
           Container(
@@ -175,12 +111,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       }
                     });
                   },
->>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

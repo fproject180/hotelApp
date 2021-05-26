@@ -6,7 +6,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:hotelmain/otherPages/aboutUs.dart';
-import 'package:hotelmain/pages/bookingInfo.dart';
 import 'package:slimy_card/slimy_card.dart';
 
 import 'package:hotelmain/pages/bookingInformation.dart';
@@ -23,11 +22,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   int _selectedIndex = 0;
 
   Future<List> getRequest() async {
-<<<<<<< HEAD
-    var response = await Dio().get("http://52.66.53.243:3000/hotelRoute/");
-=======
     var response = await Dio().get("http://52.66.53.243:3000/hotelroute");
->>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
     return response.data;
   }
 
@@ -163,13 +158,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             style: TextStyle(color: Colors.black),
           ),
           onPressed: () {
-<<<<<<< HEAD
             Navigator.of(context).push(CupertinoPageRoute(
                 builder: (context) => bookingInformationPage()));
-=======
-            Navigator.of(context).push(
-                CupertinoPageRoute(builder: (context) => BookingInfoPage()));
->>>>>>> 20b4cdf1e07a6768cd0727f02766efa384d0743d
           },
           color: Colors.white,
         ),
