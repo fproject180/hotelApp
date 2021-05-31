@@ -5,8 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:hotelmain/otherPages/aboutUs.dart';
-import 'package:slimy_card/slimy_card.dart';
 
 import 'package:hotelmain/pages/bookingInformation.dart';
 
@@ -68,18 +66,18 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                           padding: EdgeInsets.all(15.0),
-                          child: SlimyCard(
-                            slimeEnabled: true,
-                            color: Colors.teal,
-                            topCardHeight: 350,
-                            width: 350,
-                            bottomCardHeight: 150,
-                            topCardWidget: topCardWidget(
-                                "assets/cities.jpg",
-                                snapshot.data[index]["hotelName"],
-                                snapshot.data[index]["city"]),
-                            bottomCardWidget: bottomCardWidget(),
-                          ),
+                          // child: SlimyCard(
+                          //   slimeEnabled: true,
+                          //   color: Colors.teal,
+                          //   topCardHeight: 350,
+                          //   width: 350,
+                          //   bottomCardHeight: 150,
+                          //   topCardWidget: topCardWidget(
+                          //       "assets/cities.jpg",
+                          //       snapshot.data[index]["hotelName"],
+                          //       snapshot.data[index]["city"]),
+                          //   bottomCardWidget: bottomCardWidget(),
+                          // ),
                         );
                       });
                 }
@@ -177,10 +175,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           _selectedIndex = index;
         });
         if (_selectedIndex == 0) {
-        } else if (_selectedIndex == 1) {
-          Navigator.of(context)
-              .push(CupertinoPageRoute(builder: (context) => AboutUs()));
-        }
+        } else if (_selectedIndex == 1) {}
       },
       items: [
         BottomNavyBarItem(

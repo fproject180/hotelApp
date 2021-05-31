@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hotelmain/pages/billingPage.dart';
 import 'package:hotelmain/pages/homePage.dart';
+import 'package:hotelmain/pages/homePage1.dart';
 import 'package:hotelmain/pages/registerPage.dart';
+import 'package:hotelmain/services/authenticationService.dart';
 import 'package:hotelmain/services/loginService.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -133,9 +136,13 @@ class _LoginPageState extends State<LoginPage> {
                           "Submit",
                         ),
                         color: CupertinoColors.activeBlue,
-                        onPressed: () async {
-                          Navigator.of(context).push(CupertinoPageRoute(
-                              builder: (context) => HomePage()));
+                        onPressed: () {
+                          context.read<AuthenticationService>().signIn(
+                                email: emailController.text.trim(),
+                                password: passwordController.text.trim(),
+                              );
+                          // Navigator.of(context).push(CupertinoPageRoute(
+                          //     builder: (context) => homePage()));
                           // final String email = emailController.text;
                           // final String password = passwordController.text;
                           // var _userLogin =

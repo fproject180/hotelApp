@@ -32,14 +32,14 @@ class _billingPageState extends State<billingPage> {
 
   void openCheckout() {
     var options = {
-      "key": "rzp_test_4tJOGnreKMYNnM",
+      "key": "rzp_test_4tJOGnreKMYNnM", // test API key
       "amount": num.parse(amountController.text) *
           100, //converting to number and multiplying to increase decimal value
       "name": "Hotel_owner_A/c",
       "description": "The Total Hotel Bill.",
       "prefill": {
-        "contact": "",
-        "email": "",
+        "contact": "9637754880",
+        "email": "kyz@gmail.com",
       }
     };
 
@@ -50,14 +50,14 @@ class _billingPageState extends State<billingPage> {
     }
   }
 
-  void handlerPaymentSuccess() {
+  void handlerPaymentSuccess(BuildContext context) {
     print("Payment Successful");
     Toast.show("Payment Successful ✔", context, backgroundColor: Colors.green);
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
+        context, CupertinoPageRoute(builder: (context) => HomePage()));
   }
 
-  void handlerPaymentError() {
+  void handlerPaymentError(BuildContext context) {
     print("Payment Failed");
     Toast.show("Payment Failed ✕", context, backgroundColor: Colors.red);
   }
@@ -189,9 +189,9 @@ class _billingPageState extends State<billingPage> {
                 height: 90.0,
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(230, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(150, 0, 0, 0),
                 child: Text(
-                  "Totally Secured Payment",
+                  "Totally Secured Payment By RazorPay",
                   style: TextStyle(color: Colors.grey),
                 ),
               )
